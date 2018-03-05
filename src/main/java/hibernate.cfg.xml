@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/hibernatedb</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">#infy1234</property>
+        
+        <property name="hibernate.connection.pool_size">1</property>
+        
+        <!-- Dialect :  The kind of language you are using oracle's sql or mysql's sql-->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        
+        <property name="hibernate.current_session_context_class">thread</property>
+        
+        <!-- Hibernate will or will not print out the sql that it will generate -->
+        <property name="hibernate.show_sql">true</property>
+        
+        <!-- Drop and re-create the db schema on startup -->
+        <property name="hbm2ddl.auto">create</property>
+        
+        <!-- Depending on what model classes we create we'll add name of class in this property 
+        <mapping class="Class1"/>
+        <mapping class="Class2"/>
+        -->
+        <mapping class="net.codejava.hibernate.dto.UserDetails">
+        
+        <mapping resource="book.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>
