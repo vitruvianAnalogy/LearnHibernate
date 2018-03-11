@@ -3,6 +3,8 @@ package net.codejava.hibernate.dto;
 import java.util.Date;
 
 import javax.persistence.Entity; //Instead of using hibernate api we'll use persistence api
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Temporal;
@@ -10,7 +12,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class UserDetails {
-	@Id
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 	public int getUserId() {
 		return userId;

@@ -13,17 +13,23 @@ public class HibernateTest {
 		
 		//Normally we'd use DAO to create a data layer and the data layer will use hibernate to save this.
 		UserDetails user = new UserDetails();
-		user.setUserId(1);
 		user.setUserName("firstUser");
 		user.setAddress("First User's address");
 		user.setJoinedDate(new Date());
 		user.setDescription("First user's description");
+		
+		UserDetails user2 = new UserDetails();
+		user2.setUserName("secondUser");
+		user2.setAddress("address of user 2");
+		user2.setDescription("desc for user 2");
+		user.setJoinedDate(new Date());
 		
 	
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user);
+		session.save(user2);
 		session.getTransaction().commit(); //db commit
 		session.close();
 		
