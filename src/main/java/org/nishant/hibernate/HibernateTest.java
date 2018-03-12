@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import net.codejava.hibernate.dto.UserDetails;
+import net.codejava.hibernate.dto.Vehicle;
 
 public class HibernateTest {
 	public static void main(String[] args) throws InterruptedException{
@@ -17,6 +18,10 @@ public class HibernateTest {
 		user.setAddress("First User's address");
 		user.setJoinedDate(new Date());
 		user.setDescription("First user's description");
+		
+		Vehicle vehicle = new Vehicle();
+		vehicle.setVehicleName("Car");
+		user.setVehicle(vehicle);
 		
 		UserDetails user2 = new UserDetails();
 		user2.setUserName("secondUser");
@@ -29,6 +34,7 @@ public class HibernateTest {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user);
+		session.save(vehicle);
 		session.save(user2);
 		session.getTransaction().commit(); //db commit
 		session.close();
